@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Daily Activity</title>
+    <script src="chart.umd.js"></script>
+    <script src="overriding.js" type="module" defer></script>
+    <link rel="stylesheet" href="overriding.css" />
+  </head>
+  <body>
+    <div id="filters">
+      <div class="date-filter">
+        <input type="date" id="date" name="current_date" />
+      </div>
+      <div>
+        <select id="domain_name" name="domain_name">
+          <option selected="true" disabled="disabled" value="">Select Domain</option>    
+          <!-- <option value="google.com">google.com</option>
+          <option value="dev.to">dev.to</option> -->
+        </select>
+      </div>
+      <div class="last-n-time-filter">
+        <label>Websites used in last</label>
+        <input
+          type="number"
+          id="last-n-hour-filter"
+          name="last-n-hour-filter"
+          min="0"
+          max="23"
+        />
+        <span>hour</span>
+        <input
+          type="number"
+          id="last-n-minute-filter"
+          name="last-n-minute-filter"
+          min="1"
+          max="59"
+        />
+        <span>minutes</span>
+        <button id="set-last-n-time-btn">change</button>
+      </div>
+    </div>
+    <div class="container">
+      <div class="chart-container">
+        <button id="toggleButton">View hourly consumption</button>
+        <div class="hourly-chart-container hidden">
+          <canvas id="hourly-chart"></canvas>
+        </div>
+        <div class="pie-chart-container">
+          <canvas id="pie-chart"></canvas>
+        </div>
+      </div>
+      <div class="domain-consumption">
+        <div class="domain-view-btn-container">
+            <h2>Domain wise Time consumption</h2>
+            <div>
+                <button class="view-all-btn">view all</button>
+            </div>
+        </div>
+        <ul></ul>
+      </div>
+    </div>
+    <div class="capture-container">
+        <!-- <button id="capture-button">Capture Screenshot</button> -->
+        <p><b>Activity History</b></p>
+        <button id="download-csv-btn">Download Activity</button>
+      </div>
+  </body>
+</html>

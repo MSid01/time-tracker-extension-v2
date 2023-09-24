@@ -1,0 +1,156 @@
+body{    
+    margin:0;
+    padding: 0;
+    background-color: rgb(247, 247, 247);
+}
+
+#toggleButton, #set-last-n-time-btn{
+    background: #d3d5ce;
+    border: none;
+    padding: 7px 12px;
+    border-radius: 5px;
+    font-weight: 600;
+}
+
+.view-all-btn{
+    background: #d3d5ce;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: 600;
+}
+
+.view-all-btn:hover{
+    background: #191a16;
+    color:white;
+}
+
+
+button:hover {
+	opacity: 0.85;
+    cursor: pointer;
+}
+
+#filters{
+    display: flex;
+    gap: 65px;
+    padding: 28px;
+    align-items: baseline;
+    background: #3c3c3c;
+    color: white;
+    font-size: medium;
+}
+
+.container{
+    display: flex;
+    gap:20px;
+    
+}
+
+.last-n-time-filter{
+    margin-left: auto;
+}
+
+.capture-container {
+    position: absolute;
+    bottom: 10px; /* Adjust the bottom padding as needed */
+    right: 10px; /* Adjust the right padding as needed */
+        padding: 10px;
+        border-radius: 7px;
+        background: #d0d0d0;
+  }
+
+#download-csv-btn {
+    background-color: #607184;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+  }
+
+.chart-container{
+    width: 55vw;
+    padding: 16px;
+}
+
+.domain-consumption{
+    padding: 16px;
+    width:50%;
+    margin:10px;
+}
+
+.domain-consumption h2{
+    padding:3px 16px;
+}
+
+.domain-view-btn-container{
+    display: flex;
+    align-items: baseline;
+}
+
+#domain_name{
+    background-color: #d3d5ce;
+    padding: 8px;
+    color: #000000;
+    font-weight: 700;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+}
+
+.pie-chart-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 450px;
+}
+
+
+.hidden {
+    display: none;
+}
+
+
+.favicon-image{
+    width: 30px;
+  height: 30px; 
+}
+
+
+
+ul{
+    padding-inline-start: 16px;
+}
+
+li{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    cursor: pointer;
+    background-color: #ececec;
+    padding:0 16px;
+    border-radius: 5px;
+    margin: 10px 0;
+}
+li h3{
+    flex:auto;
+}
+  
+
+input[type="date"]{
+    background-color: #d3d5ce;
+    padding: 5px;
+    color: #000000;
+    font-weight: 700;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+}
+::-webkit-calendar-picker-indicator{
+    background-color: #ffffff;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 3px;
+}

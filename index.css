@@ -1,0 +1,85 @@
+body{
+    margin: 0;
+    padding: 0 5px;
+  }
+  
+  .favicon-image{
+      width: 20px;
+    height: auto;
+    
+    max-width: 100%;
+    max-height: 150px;
+  }
+  
+  .time-limit-setting{
+    display: flex;
+    gap:10px;
+    align-items: baseline;
+  }
+  
+  .setting{
+    margin: 10px 16px;
+  }
+  
+  .setting > div{
+    padding:4px;
+    margin: 4px;
+  }
+  
+  .record-tab-setting{
+    display: flex;
+      justify-content: flex-end;
+      align-items: baseline;
+  }
+  
+  button{
+    background-color: #434343;
+    color: white;
+    padding:5px 8px;
+    border-radius: 5px;
+  }
+  
+  button:hover{
+    opacity: 75%;
+    cursor: pointer;
+  }
+  
+  
+  
+  .record-tab-setting button{
+    background-color: #191616;
+  }
+  
+  header{
+    display: flex;
+    padding: 0px 8px;
+    align-items: center;
+    gap:10px
+  }
+  
+  .current-host{
+    display: flex;
+    align-items: center;
+    gap:4px;
+    justify-content: center;
+  }
+
+  
+.hidden {
+    display: none;
+}
+  
+  h3{
+    margin:8px;
+  }
+  
+  header img{
+    width: 30px;
+    height: 30px;
+  }
+  
+  .popup-container{
+    width:550px;
+    height: 480px;
+    margin: 16px;
+  }

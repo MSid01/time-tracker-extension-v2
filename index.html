@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Web Activity Tracker</title>
+  <script src="chart.umd.js"></script>
+  <script src="index.js" type="module" defer></script>
+  <link rel="stylesheet" href="index.css"/>
+</head>
+<body>
+  <div class="popup-container">
+    <header>
+      <img src="icons/icon128.png" alt="timeTrackerLogo"/>
+    <h2>
+      Web Activity Tracker
+    </h2>
+  </header>
+  <div class="current-host">
+  </div>
+  <h3>Total time spent: <span id="time-spent">45</span></h3>
+  <canvas id="hourly-chart"></canvas>
+  <div class="setting">
+    <div class="time-limit-setting">
+      <label for="time-limit">Set Time Limit</label>
+      <input type="number" name="time-limit-hour" value="0" min="0" max="23"/>
+      <input type="number" name="time-limit-minute" value="0" min="0" max="59"/>
+      <button>Set</button>
+    </div>
+    <div class="record-tab-setting">
+      <button class="start-capture">start capturing</button>
+      <button class="hidden stop-capture">stop capturing</button>
+    </div>
+  </div>
+  <!-- <button id="record">Record button</button> -->
+</div>
+</body>
+</html>
