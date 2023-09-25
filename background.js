@@ -154,8 +154,8 @@ function startTracking(url, changeInfo) {
 
   stopTracking();
   if (changeInfo && changeInfo.status !== "complete") return;
-
-  if (!url || url.startsWith("chrome://")) {
+  
+  if (!url || !url.startsWith("https://") ) {
     chrome.storage.local.set({
       startTime: null,
       currentHostname: null,

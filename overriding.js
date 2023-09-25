@@ -65,6 +65,14 @@ const toggleButton = document.getElementById("toggleButton");
 const viewAllButton = document.getElementsByClassName("view-all-btn")[0];
 viewAllButton.classList.add("hidden");
 
+const imageDialog = document.getElementById('imageDialog');
+const closeDialogButton = document.getElementById('closeDialog');
+const imageDialogImgEle = document.querySelector("#imageDialog img");
+
+closeDialogButton.addEventListener('click', ()=>{
+  imageDialog.close();
+});
+
 const hourlyChartContainer = document.getElementsByClassName(
   "hourly-chart-container"
 )[0];
@@ -231,6 +239,7 @@ function createHourlyBarChart(startTimeOfDay, domainName) {
   });
 }
 
+
 function createDomainConsumptionList(startTime, endTime, domainName) {
   let userSessionsList;
   console.log(domainName);
@@ -281,15 +290,59 @@ function createDomainConsumptionList(startTime, endTime, domainName) {
       const domainNameHeader = document.createElement("h3");
       domainNameHeader.textContent = item.domainName;
 
+      const dropDownBtn = document.createElement("button");
+      dropDownBtn.textContent = "🔽";
+      dropDownBtn.classList.add("accordian-btn");
+
       const totalTimeSpentHeader = document.createElement("h4");
       totalTimeSpentHeader.textContent = millisecondsToHoursMinutes(
         item.totalTimeSpent
       );
+      let dropDownBtnState = false;
+      dropDownBtn.addEventListener('click', function(e){
+        e.stopPropagation();
+        if(dropDownBtnState){
+          li.removeChild(li.lastChild);
+          dropDownBtnState=false;
+          return
+        }
 
-      // Append the image and headers to the list item
-      li.appendChild(img);
-      li.appendChild(domainNameHeader);
-      li.appendChild(totalTimeSpentHeader);
+        dropDownBtnState = true;
+
+        const accordianDiv = document.createElement("div");
+        
+        accordianDiv.classList.add("accordian");
+        chrome.storage.local.get("screenshotsObj", function(res){
+          const domainSSList = res.screenshotsObj[item.domainName];
+          if(!domainSSList){
+            accordianDiv.textContent="No Screenshots captured yet";
+          }else{
+            domainSSList.forEach((imgSrc)=>{
+              const img = document.createElement("img");
+              img.setAttribute("src", imgSrc);
+              
+              img.classList.add("favicon-image");
+              img.addEventListener("click",function(e){
+                e.stopPropagation();
+                imageDialogImgEle.setAttribute("src", imgSrc);
+                imageDialog.showModal();
+              })
+              accordianDiv.appendChild(img);
+            })
+          }
+        })
+        li.appendChild(accordianDiv);
+      })
+      
+      const topDiv = document.createElement("div");
+
+
+      topDiv.appendChild(img);
+      topDiv.appendChild(domainNameHeader);
+      topDiv.appendChild(totalTimeSpentHeader);
+      topDiv.appendChild(dropDownBtn);
+
+      li.appendChild(topDiv);
 
       // Append the list item to the unordered list
       domainConsumptionEle.appendChild(li);
@@ -332,6 +385,13 @@ function createPieChart(startTime, endTime) {
         plugins: {
           legend: {
             position: "right",
+          },
+            tooltip: {
+              callbacks: {
+                label: function (context) {
+                  return millisecondsToHoursMinutes(context.parsed);
+                },
+              },
           },
         },
       },
@@ -420,23 +480,3 @@ toggleButton.addEventListener("click", () => {
   }
 });
 
-/* 
-const captureButton = document.getElementById("capture-button");
-  
-    captureButton.addEventListener("click", function() {
-      chrome.tabs.captureVisibleTab(function(screenshotDataUrl) {
-        
-        const filename = 'screenshot_' + Date.now() + '.png';
-        chrome.downloads.download({
-          url: screenshotDataUrl,
-          filename: filename,
-          saveAs: false, // Set to true if you want to prompt the user for the download location
-        }, function (downloadId) {
-          if (chrome.runtime.lastError) {
-            console.error(chrome.runtime.lastError);
-          } else {
-            console.log('Screenshot downloaded as ' + filename);
-          }
-        });
-      });
-    }); */

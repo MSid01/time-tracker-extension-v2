@@ -22,4 +22,5 @@ export function timeToMilliseconds(hours, minutes) {
   return totalMilliseconds;
 }
 
-export const API_URL = "http://192.168.136.188:8080/api";
+// export const API_URL = "http://192.168.136.188:8080/api";
+export const API_URL = "http://192.168.48.1:8080/api";

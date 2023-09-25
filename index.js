@@ -119,30 +119,30 @@ function createHourlyBarChart(startTimeOfDay, domainName) {
               : `hourly time consumption`,
             data: data,
             backgroundColor: [
-              "#000000", // Midnight (12:00 AM)
-              "#02034E", // Early Morning (1:00 AM)
-              "#051B50", // Early Morning (2:00 AM)
-              "#07335B", // Early Morning (3:00 AM)
-              "#095560", // Dawn (4:00 AM)
-              "#0B6B64", // Dawn (5:00 AM)
-              "#0D8268", // Morning (6:00 AM)
-              "#0F986D", // Morning (7:00 AM)
-              "#11AE71", // Morning (8:00 AM)
-              "#13C575", // Late Morning (9:00 AM)
-              "#15DB7A", // Late Morning (10:00 AM)
-              "#17F27E", // Late Morning (11:00 AM)
-              "#1BF882", // Noon (12:00 PM)
-              "#3FFD8B", // Afternoon (1:00 PM)
-              "#5CFE9E", // Afternoon (2:00 PM)
-              "#79FFB2", // Afternoon (3:00 PM)
-              "#96FFC5", // Afternoon (4:00 PM)
-              "#B3FFD9", // Late Afternoon (5:00 PM)
-              "#D1FFEC", // Late Afternoon (6:00 PM)
-              "#EEFFFF", // Evening (7:00 PM)
-              "#FFFFFC", // Evening (8:00 PM)
-              "#FEF5FD", // Night (9:00 PM)
-              "#FDD2FC", // Night (10:00 PM)
-              "#FBADFB", // Night (11:00 PM)
+              "#000000", 
+              "#02034E", 
+              "#051B50", 
+              "#07335B", 
+              "#095560", 
+              "#0B6B64", 
+              "#0D8268", 
+              "#0F986D", 
+              "#11AE71", 
+              "#13C575", 
+              "#15DB7A", 
+              "#17F27E", 
+              "#1BF882", 
+              "#3FFD8B", 
+              "#5CFE9E", 
+              "#79FFB2", 
+              "#96FFC5", 
+              "#B3FFD9", 
+              "#D1FFEC", 
+              "#EEFFFF", 
+              "#FFFFFC", 
+              "#FEF5FD", 
+              "#FDD2FC", 
+              "#FBADFB", 
             ],
           },
         ],
@@ -155,7 +155,7 @@ chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
   if (tabs.length > 0) {
     const activeTab = tabs[0];
     const hostName = new URL(activeTab.url).host;
-    if (activeTab.url.startsWith("chrome://")) {
+    if (!activeTab.url.startsWith("https://")) {
       createHourlyBarChart(new Date().setHours(0, 0, 0, 0));
       return;
     }
@@ -240,7 +240,7 @@ document.addEventListener("DOMContentLoaded", function () {
   chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
     if (tabs.length > 0) {
       const activeTab = tabs[0];
-      if (activeTab.url.startsWith("chrome://")) {
+      if (!activeTab.url.startsWith("https://")) {
         setTimeLimitContainer.classList.add("hidden");
         recordTabContainer.classList.add("hidden");
       }
